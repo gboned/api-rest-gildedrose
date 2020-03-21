@@ -18,7 +18,7 @@ from resources.sellin import SellIn
 from repository import db_atlas
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/": {"origins": ""}})
 
 db_atlas.init_app(app)
 
@@ -34,4 +34,5 @@ api.add_resource(Quality, '/items/quality/<itemQuality>')
 api.add_resource(SellIn, '/items/sellin/<itemSellIn>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,
+            host='localhost')
